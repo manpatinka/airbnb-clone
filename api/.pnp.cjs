@@ -29,6 +29,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["bcryptjs", "npm:2.4.3"],\
+            ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.4.5"],\
             ["express", "npm:4.18.2"],\
@@ -178,10 +179,28 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         }]\
       ]],\
       ["cookie", [\
+        ["npm:0.4.1", {\
+          "packageLocation": "./.yarn/cache/cookie-npm-0.4.1-cc5e2ebb42-bd7c47f5d9.zip/node_modules/cookie/",\
+          "packageDependencies": [\
+            ["cookie", "npm:0.4.1"]\
+          ],\
+          "linkType": "HARD"\
+        }],\
         ["npm:0.5.0", {\
           "packageLocation": "./.yarn/cache/cookie-npm-0.5.0-e2d58a161a-1f4bd2ca57.zip/node_modules/cookie/",\
           "packageDependencies": [\
             ["cookie", "npm:0.5.0"]\
+          ],\
+          "linkType": "HARD"\
+        }]\
+      ]],\
+      ["cookie-parser", [\
+        ["npm:1.4.6", {\
+          "packageLocation": "./.yarn/cache/cookie-parser-npm-1.4.6-a68f84d02a-1e5a63aa82.zip/node_modules/cookie-parser/",\
+          "packageDependencies": [\
+            ["cookie-parser", "npm:1.4.6"],\
+            ["cookie", "npm:0.4.1"],\
+            ["cookie-signature", "npm:1.0.6"]\
           ],\
           "linkType": "HARD"\
         }]\
@@ -960,6 +979,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageDependencies": [\
             ["root-workspace-0b6124", "workspace:."],\
             ["bcryptjs", "npm:2.4.3"],\
+            ["cookie-parser", "npm:1.4.6"],\
             ["cors", "npm:2.8.5"],\
             ["dotenv", "npm:16.4.5"],\
             ["express", "npm:4.18.2"],\
