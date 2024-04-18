@@ -121,13 +121,13 @@ app.post('/places', (req, res) => {
         const placeDoc = await Place.create({
             owner: userData.id, price,
             title, address, photos: addedPhotos, description,
-            perks, extraInfo, checkIn, checkOut, maxGuests,
+            perks, extraInfo, checkIn, checkOut, maxGuests, 
         });
         res.json(placeDoc);
     });
 });
 
-app.get('/places', (req, res) => {
+app.get('/user-places', (req, res) => {
     mongoose.connect(process.env.MONGO_URL);
     const { token } = req.cookies;
     jwt.verify(token, jwtSecret, {}, async (err, userData) => {
@@ -156,12 +156,17 @@ app.put('/places', async (req, res) => {
             placeDoc.set({
                  price,
                 title, address, photos: addedPhotos, description,
-                perks, extraInfo, checkIn, checkOut, maxGuests,
+                perks, extraInfo, checkIn, checkOut, maxGuests, price,
             })
             await placeDoc.save();
             res.json('ok');
         }
     });
+});
+
+app.get('/places', async (req, res) => {
+    res.json(await Place.find());
 })
+
 
 app.listen(4000);

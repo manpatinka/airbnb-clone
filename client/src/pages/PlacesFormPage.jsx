@@ -16,6 +16,7 @@ export default function PlacesFormPage() {
     const [checkIn, setCheckIn] = useState('');
     const [checkOut, setCheckOut] = useState('');
     const [maxGuests, setMaxGuests] = useState(1);
+    const [price, setPrice] = useState(100);
     const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
@@ -33,6 +34,7 @@ export default function PlacesFormPage() {
             setCheckIn(data.checkIn);
             setCheckOut(data.checkOut);
             setMaxGuests(data.maxGuests);
+            setPrice(data.price);
         })
     }, [id]);
 
@@ -58,7 +60,7 @@ export default function PlacesFormPage() {
         const placeData = {
             title, address, addedPhotos,
             description, perks, extraInfo,
-            checkIn, checkOut, maxGuests
+            checkIn, checkOut, maxGuests, price,
         }
         if (id) {
             await axios.put('/places', {
@@ -107,7 +109,7 @@ export default function PlacesFormPage() {
                     value={extraInfo}
                     onChange={e => setExtraInfo(e.target.value)} />
                 {preInput('Check in and out times', 'Choose check in and out times, remember to save time between guests for cleaning')}
-                <div className='grid gap-2 sm:grid-cols-3'>
+                <div className='grid gap-2 grid-cols-2 md:grid-cols-4'>
                     <div>
                         <h3 className='mt-2 -mb-1'>Check in time</h3>
                         <input
@@ -131,6 +133,14 @@ export default function PlacesFormPage() {
                             placeholder='3'
                             value={maxGuests}
                             onChange={e => setMaxGuests(e.target.value)} />
+                    </div>
+                    <div>
+                        <h3>Price per night</h3>
+                        <input
+                            type="number"
+                            placeholder='3'
+                            value={price}
+                            onChange={e => setPrice(e.target.value)} />
                     </div>
                 </div>
                 <button className='primary my-4'>Save</button>
